@@ -34,6 +34,7 @@
 #include <string>
 
 
+
 class Logging
 {
     public:
@@ -41,13 +42,40 @@ class Logging
         Logging(const std::string& FileName);
         ~Logging();
 
-        template <class T>
-        Logging& operator << (const T& Input);
+        template <class T> Logging &operator <<(const T &Input);
+
 
     private:
         std::fstream* ActualFile;
         std::string GetCurrentDate();
 };
+
+
+
+/**
+ * @brief Logging::operator <<  The template output operator which is used to
+ *        output the Input to the file.
+ * @param Input The variable which should be saved in the log file.
+ *
+ * @author sheng
+ * @date   2014-08-22
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-22          0.1         build the function
+ *
+ */
+template <class T> Logging& Logging::operator <<(const T& Input)
+{
+    if (ActualFile)
+    {
+        // write the Input to the log file.
+        (*ActualFile) << Input;
+    }
+
+    return *this;
+}
 
 #endif // LOGGING_H
 

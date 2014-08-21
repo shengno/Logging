@@ -115,7 +115,6 @@ Logging::~Logging()
 
 
 
-
 /**
  * @brief Logging::GetCurrentDate Get a string which represent the local current
  *        time.
@@ -138,31 +137,3 @@ std::string Logging::GetCurrentDate()
     return Result;
 }
 
-
-
-
-/**
- * @brief Logging::operator <<  Overload operator
- * @param Input The Input which would the be saved in the logging file.
- * @return The Logging objcet.
- *
- * @author sheng
- * @date   2014-08-21
- * @version 0.1
- *
- * @history
- *     <author>       <date>         <version>        <description>
- *      sheng       2014-08-21          0.1         build the function
- *
- */
-template <class T>
-Logging &Logging::operator <<(const T & Input)
-{
-    // save the input when the actual file is existed.
-    if (ActualFile)
-    {
-        ActualFile << Input;
-    }
-
-    return *this;
-}
