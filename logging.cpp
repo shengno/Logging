@@ -27,9 +27,19 @@
 
 
 #include "logging.h"
+#include "CurrentTime.h"
 
 /**
- * @brief Logging::Logging
+ * @brief Logging::Logging The default constructor
+ *
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
  */
 Logging::Logging() : ActualFile(NULL)
 {
@@ -45,23 +55,49 @@ Logging::Logging() : ActualFile(NULL)
 
 
 
+
+
+
 /**
- * @brief Logging::Logging
- * @param FileName
+ * @brief Logging::Logging The overload constructor
+ * @param FileName The prefix of the actural file name
+ *
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
  */
 Logging::Logging(const std::string &FileName) : ActualFile(NULL)
 {
     // consturct a fstream
     ActualFile = new std::fstream;
 
+    // Acturall file name
+    std::string ActuralFileName = FileName + GetCurrentDate();
+
     // open the output file
-    ActualFile->open(FileName.c_str(), std::ios_base::out);
+    ActualFile->open(ActuralFileName.c_str(), std::ios_base::out);
 }
 
 
 
+
+
 /**
- * @brief Logging::~Logging
+ * @brief Logging::~Logging The destructor
+ *
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
  */
 Logging::~Logging()
 {
@@ -78,26 +114,51 @@ Logging::~Logging()
 
 
 
+
+
 /**
- * @brief Logging::GetCurrentDate
- * @return
+ * @brief Logging::GetCurrentDate Get a string which represent the local current
+ *        time.
+ * @return The local current time in the type of string.
+ *
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
  */
 std::string Logging::GetCurrentDate()
 {
-    return "test.log";
+    // get the current date in string
+    std::string Result = GetCurrentTime();
+
+    return Result;
 }
 
 
 
 
 /**
- * @brief Logging::operator <<
- * @param Input
- * @return
+ * @brief Logging::operator <<  Overload operator
+ * @param Input The Input which would the be saved in the logging file.
+ * @return The Logging objcet.
+ *
+ * @author sheng
+ * @date   2014-08-21
+ * @version 0.1
+ *
+ * @history
+ *     <author>       <date>         <version>        <description>
+ *      sheng       2014-08-21          0.1         build the function
+ *
  */
 template <class T>
 Logging &Logging::operator <<(const T & Input)
 {
+    // save the input when the actual file is existed.
     if (ActualFile)
     {
         ActualFile << Input;
