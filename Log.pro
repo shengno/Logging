@@ -4,7 +4,10 @@ CONFIG   += console
 CONFIG   -= app_bundle
 
 TEMPLATE = app
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    logging.cpp \
+    GetCurrentTime.cpp \
+    IntToString.cpp
 
 
 
@@ -29,5 +32,10 @@ LIBS += D:/OpenCV2.4.9/lib/libopencv_superres249.dll.a
 LIBS += D:/OpenCV2.4.9/lib/libopencv_ts249.a
 LIBS += D:/OpenCV2.4.9/lib/libopencv_video249.dll.a
 LIBS += D:/OpenCV2.4.9/lib/libopencv_videostab249.dll.a
+
+HEADERS += \
+    logging.h \
+    CurrentTime.h \
+    IntToString.h
 
 
