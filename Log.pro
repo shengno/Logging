@@ -7,7 +7,8 @@ TEMPLATE = app
 SOURCES += main.cpp \
     logging.cpp \
     GetCurrentTime.cpp \
-    IntToString.cpp
+    IntToString.cpp \
+    Test_Logging.cpp
 
 
 
